@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Properties Reference</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- Nền hạt bay -->
+<canvas id="canvas-hat" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+<div class="container">
+
+  <h1 class="tieu-de">CSS Properties Reference</h1>
+  <p class="mo-ta">Tham khảo nhanh các thuộc tính CSS</p>
+
+  <!-- Ô tìm kiếm -->
+  <div class="khu-tim-kiem">
+    <input type="text" id="o-tim-kiem"
+           placeholder="Tìm theo tên thuộc tính... (vd: margin, flex)"
+           oninput="timKiem(this.value)"/>
+  </div>
+
+  <!-- Tabs -->
+  <div class="danh-sach-tab">
+    <div class="tab active" onclick="chuyenTab('van-ban', this)">Văn bản</div>
+    <div class="tab"        onclick="chuyenTab('box',     this)">Box model</div>
+    <div class="tab"        onclick="chuyenTab('layout',  this)">Layout</div>
+    <div class="tab"        onclick="chuyenTab('nen-vien',this)">Nền & viền</div>
+    <div class="tab"        onclick="chuyenTab('transform',this)">Transform</div>
+    <div class="tab"        onclick="chuyenTab('animation',this)">Animation</div>
+    <div class="tab"        onclick="chuyenTab('cu-phap', this)">Cú pháp</div>
+  </div>
+
+
+  <!-- ==================== KẾT QUẢ TÌM KIẾM ==================== -->
+  <div class="panel" id="panel-search">
+    <div class="nhom">
+      <div class="nhan-nhom nhan-tim">Kết quả tìm kiếm</div>
+      <div class="luoi-thuoc-tinh" id="ket-qua-tim-kiem"></div>
+    </div>
+  </div>
+
+
+  <!-- ==================== VĂN BẢN ==================== -->
+  <div class="panel active" id="panel-van-ban">
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-tim">Font & chữ</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">color</div><div class="gia-tri-thuoc-tinh">red | #fff | rgb(255,255,255) | hsl(200,50%,50%)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">font-size</div><div class="gia-tri-thuoc-tinh">16px | 1rem | 1.2em | 120%</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">font-family</div><div class="gia-tri-thuoc-tinh">'Segoe UI', Arial, sans-serif</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">font-weight</div><div class="gia-tri-thuoc-tinh">normal | bold | 100 | 400 | 700 | 900</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">font-style</div><div class="gia-tri-thuoc-tinh">normal | italic | oblique</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">font-variant</div><div class="gia-tri-thuoc-tinh">normal | small-caps</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">line-height</div><div class="gia-tri-thuoc-tinh">1.5 | 24px | normal</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">letter-spacing</div><div class="gia-tri-thuoc-tinh">0.05em | 2px | normal</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">word-spacing</div><div class="gia-tri-thuoc-tinh">4px | normal</div></div>
+      </div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-tim">Căn chỉnh & trang trí</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">text-align</div><div class="gia-tri-thuoc-tinh">left | center | right | justify</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">text-decoration</div><div class="gia-tri-thuoc-tinh">none | underline | line-through | overline</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">text-transform</div><div class="gia-tri-thuoc-tinh">uppercase | lowercase | capitalize | none</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">text-shadow</div><div class="gia-tri-thuoc-tinh">2px 2px 4px rgba(0,0,0,0.3)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">text-indent</div><div class="gia-tri-thuoc-tinh">20px | 2em</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">vertical-align</div><div class="gia-tri-thuoc-tinh">top | middle | bottom | baseline</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">white-space</div><div class="gia-tri-thuoc-tinh">normal | nowrap | pre | pre-wrap | pre-line</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">overflow-wrap</div><div class="gia-tri-thuoc-tinh">normal | break-word | anywhere</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">text-overflow</div><div class="gia-tri-thuoc-tinh">clip | ellipsis (cần overflow: hidden)</div></div>
+      </div>
+    </div>
+
+  </div><!-- /panel-van-ban -->
+
+
+  <!-- ==================== BOX MODEL ==================== -->
+  <div class="panel" id="panel-box">
+
+    <div class="nhom tab-xanh">
+      <div class="nhan-nhom nhan-xanh">Kích thước</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">width</div><div class="gia-tri-thuoc-tinh">200px | 50% | auto | 100vw | fit-content</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">height</div><div class="gia-tri-thuoc-tinh">100px | auto | 50vh | fit-content</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">min-width</div><div class="gia-tri-thuoc-tinh">0 | 200px | none</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">max-width</div><div class="gia-tri-thuoc-tinh">600px | 100% | none</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">min-height</div><div class="gia-tri-thuoc-tinh">0 | 200px</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">max-height</div><div class="gia-tri-thuoc-tinh">500px | none</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-xanh">
+      <div class="nhan-nhom nhan-xanh">Margin & Padding</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">margin</div><div class="gia-tri-thuoc-tinh">8px | 8px 16px | 4px 8px 12px 16px | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">margin-top / bottom</div><div class="gia-tri-thuoc-tinh">16px | auto | 0</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">margin-left / right</div><div class="gia-tri-thuoc-tinh">16px | auto | 0</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">padding</div><div class="gia-tri-thuoc-tinh">16px | 8px 16px | 4px 8px 12px 16px</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">padding-top / bottom</div><div class="gia-tri-thuoc-tinh">8px | 0</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">padding-left / right</div><div class="gia-tri-thuoc-tinh">8px | 0</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-xanh">
+      <div class="nhan-nhom nhan-xanh">Display & Visibility</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">display</div><div class="gia-tri-thuoc-tinh">block | inline | inline-block | none | flex | grid</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">visibility</div><div class="gia-tri-thuoc-tinh">visible | hidden | collapse</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">opacity</div><div class="gia-tri-thuoc-tinh">0 → 1  (0 = trong suốt, 1 = đục)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">overflow</div><div class="gia-tri-thuoc-tinh">visible | hidden | scroll | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">overflow-x / overflow-y</div><div class="gia-tri-thuoc-tinh">hidden | scroll | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">box-sizing</div><div class="gia-tri-thuoc-tinh">content-box | border-box  (nên dùng border-box)</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-xanh">
+      <div class="nhan-nhom nhan-xanh">Position</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">position</div><div class="gia-tri-thuoc-tinh">static | relative | absolute | fixed | sticky</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">top / right / bottom / left</div><div class="gia-tri-thuoc-tinh">0 | 20px | 50% | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">z-index</div><div class="gia-tri-thuoc-tinh">0 | 10 | 999 | -1 | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">float</div><div class="gia-tri-thuoc-tinh">left | right | none</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">clear</div><div class="gia-tri-thuoc-tinh">left | right | both | none</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">cursor</div><div class="gia-tri-thuoc-tinh">default | pointer | text | not-allowed | grab</div></div>
+      </div>
+    </div>
+
+  </div><!-- /panel-box -->
+
+
+  <!-- ==================== LAYOUT ==================== -->
+  <div class="panel" id="panel-layout">
+
+    <div class="nhom tab-la">
+      <div class="nhan-nhom nhan-la">Flexbox — container</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">display: flex</div><div class="gia-tri-thuoc-tinh">kích hoạt flexbox</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">flex-direction</div><div class="gia-tri-thuoc-tinh">row | column | row-reverse | column-reverse</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">justify-content</div><div class="gia-tri-thuoc-tinh">flex-start | center | flex-end | space-between | space-around | space-evenly</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">align-items</div><div class="gia-tri-thuoc-tinh">stretch | center | flex-start | flex-end | baseline</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">align-content</div><div class="gia-tri-thuoc-tinh">flex-start | center | space-between  (nhiều dòng)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">flex-wrap</div><div class="gia-tri-thuoc-tinh">nowrap | wrap | wrap-reverse</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">gap</div><div class="gia-tri-thuoc-tinh">12px | 8px 16px  (row-gap col-gap)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">row-gap / column-gap</div><div class="gia-tri-thuoc-tinh">12px | 0</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-la">
+      <div class="nhan-nhom nhan-la">Flexbox — item</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">flex</div><div class="gia-tri-thuoc-tinh">1 | 0 1 auto | none | 2</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">flex-grow</div><div class="gia-tri-thuoc-tinh">0 | 1 | 2  (chiếm bao nhiêu phần)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">flex-shrink</div><div class="gia-tri-thuoc-tinh">1 | 0  (0 = không co lại)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">flex-basis</div><div class="gia-tri-thuoc-tinh">auto | 200px | 30%</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">align-self</div><div class="gia-tri-thuoc-tinh">auto | center | flex-start | flex-end | stretch</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">order</div><div class="gia-tri-thuoc-tinh">0 | 1 | -1  (thứ tự hiển thị)</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-la">
+      <div class="nhan-nhom nhan-la">Grid — container</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">display: grid</div><div class="gia-tri-thuoc-tinh">kích hoạt grid</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-template-columns</div><div class="gia-tri-thuoc-tinh">1fr 2fr | repeat(3,1fr) | 200px auto 1fr</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-template-rows</div><div class="gia-tri-thuoc-tinh">auto | 100px 1fr | repeat(3, auto)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-template-areas</div><div class="gia-tri-thuoc-tinh">"header header" "sidebar main"</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-auto-flow</div><div class="gia-tri-thuoc-tinh">row | column | dense</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">place-items</div><div class="gia-tri-thuoc-tinh">center | start end</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">place-content</div><div class="gia-tri-thuoc-tinh">center | space-between</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-la">
+      <div class="nhan-nhom nhan-la">Grid — item</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-column</div><div class="gia-tri-thuoc-tinh">1 / 3 | span 2 | 1 / -1</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-row</div><div class="gia-tri-thuoc-tinh">1 / 4 | span 2</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">grid-area</div><div class="gia-tri-thuoc-tinh">header | 1/1/2/3</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">place-self</div><div class="gia-tri-thuoc-tinh">center | start end</div></div>
+      </div>
+    </div>
+
+  </div><!-- /panel-layout -->
+
+
+  <!-- ==================== NỀN & VIỀN ==================== -->
+  <div class="panel" id="panel-nen-vien">
+
+    <div class="nhom tab-cam">
+      <div class="nhan-nhom nhan-cam">Background</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-color</div><div class="gia-tri-thuoc-tinh">#fff | transparent | rgba(0,0,0,0.5)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-image</div><div class="gia-tri-thuoc-tinh">url('img.jpg') | linear-gradient(135deg, #f00, #00f)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-size</div><div class="gia-tri-thuoc-tinh">cover | contain | 100px 200px | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-position</div><div class="gia-tri-thuoc-tinh">center | top left | 50% 50%</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-repeat</div><div class="gia-tri-thuoc-tinh">no-repeat | repeat | repeat-x | repeat-y</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-attachment</div><div class="gia-tri-thuoc-tinh">scroll | fixed | local</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background-clip</div><div class="gia-tri-thuoc-tinh">border-box | padding-box | content-box | text</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">background</div><div class="gia-tri-thuoc-tinh">#f00 url() no-repeat center/cover  (shorthand)</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-cam">
+      <div class="nhan-nhom nhan-cam">Border</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border</div><div class="gia-tri-thuoc-tinh">1px solid #ccc  (shorthand)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border-width</div><div class="gia-tri-thuoc-tinh">1px | thin | medium | thick | 2px 4px</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border-style</div><div class="gia-tri-thuoc-tinh">solid | dashed | dotted | double | none | groove</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border-color</div><div class="gia-tri-thuoc-tinh">#333 | red | transparent</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border-radius</div><div class="gia-tri-thuoc-tinh">8px | 50% | 4px 12px | 10px 20px 30px 40px</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border-top / bottom</div><div class="gia-tri-thuoc-tinh">2px solid red</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">border-left / right</div><div class="gia-tri-thuoc-tinh">1px dashed blue</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">outline</div><div class="gia-tri-thuoc-tinh">2px solid blue | none  (không chiếm layout)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">outline-offset</div><div class="gia-tri-thuoc-tinh">4px | -2px</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">box-shadow</div><div class="gia-tri-thuoc-tinh">2px 4px 8px rgba(0,0,0,0.2) | inset 0 2px 4px #000</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-cam">
+      <div class="nhan-nhom nhan-cam">Hiệu ứng & khác</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">filter</div><div class="gia-tri-thuoc-tinh">blur(4px) | brightness(1.2) | contrast(150%) | grayscale(1)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">backdrop-filter</div><div class="gia-tri-thuoc-tinh">blur(10px) | brightness(0.8)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">object-fit</div><div class="gia-tri-thuoc-tinh">fill | contain | cover | none | scale-down</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">object-position</div><div class="gia-tri-thuoc-tinh">center | top | 25% 75%</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">pointer-events</div><div class="gia-tri-thuoc-tinh">none | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">user-select</div><div class="gia-tri-thuoc-tinh">none | text | all | auto</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">resize</div><div class="gia-tri-thuoc-tinh">none | both | horizontal | vertical</div></div>
+      </div>
+    </div>
+
+  </div><!-- /panel-nen-vien -->
+
+
+  <!-- ==================== TRANSFORM ==================== -->
+  <div class="panel" id="panel-transform">
+
+    <div class="nhom tab-hong">
+      <div class="nhan-nhom nhan-hong">Transform functions</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">translate(x, y)</div><div class="gia-tri-thuoc-tinh">translate(50px, 20px) — dịch ngang / dọc</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">translateX(x)</div><div class="gia-tri-thuoc-tinh">translateX(100px) — chỉ ngang</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">translateY(y)</div><div class="gia-tri-thuoc-tinh">translateY(-50%) — chỉ dọc, hay dùng để căn giữa</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">rotate(deg)</div><div class="gia-tri-thuoc-tinh">rotate(45deg) | rotate(-90deg)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">scale(x, y)</div><div class="gia-tri-thuoc-tinh">scale(1.5) | scale(2, 0.5) — phóng to / thu nhỏ</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">scaleX / scaleY</div><div class="gia-tri-thuoc-tinh">scaleX(2) | scaleY(0.5)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">skew(x, y)</div><div class="gia-tri-thuoc-tinh">skew(10deg, 5deg) — nghiêng</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">perspective(n)</div><div class="gia-tri-thuoc-tinh">perspective(500px) — tạo chiều sâu 3D</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-hong">
+      <div class="nhan-nhom nhan-hong">Transform properties</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transform</div><div class="gia-tri-thuoc-tinh">rotate(45deg) scale(1.2) translate(10px, 0)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transform-origin</div><div class="gia-tri-thuoc-tinh">center | top left | 50% 50% | 0 0</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transform-style</div><div class="gia-tri-thuoc-tinh">flat | preserve-3d</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">backface-visibility</div><div class="gia-tri-thuoc-tinh">visible | hidden</div></div>
+      </div>
+    </div>
+
+    <div class="nhom tab-hong">
+      <div class="nhan-nhom nhan-hong">Transition — hiệu ứng mượt</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transition</div><div class="gia-tri-thuoc-tinh">all 0.3s ease  (shorthand)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transition-property</div><div class="gia-tri-thuoc-tinh">all | color | background | transform | opacity</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transition-duration</div><div class="gia-tri-thuoc-tinh">0.3s | 300ms | 1s</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transition-timing-function</div><div class="gia-tri-thuoc-tinh">ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">transition-delay</div><div class="gia-tri-thuoc-tinh">0s | 0.2s | 500ms</div></div>
+      </div>
+    </div>
+
+  </div><!-- /panel-transform -->
+
+
+  <!-- ==================== ANIMATION ==================== -->
+  <div class="panel" id="panel-animation">
+
+    <div class="nhom tab-teal">
+      <div class="nhan-nhom nhan-teal">Thuộc tính animation</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-name</div><div class="gia-tri-thuoc-tinh">tên @keyframes đã khai báo</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-duration</div><div class="gia-tri-thuoc-tinh">1s | 500ms | 2.5s</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-timing-function</div><div class="gia-tri-thuoc-tinh">ease | linear | ease-in | ease-out | steps(4) | cubic-bezier()</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-delay</div><div class="gia-tri-thuoc-tinh">0s | 0.5s | -1s  (bắt đầu giữa chừng)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-iteration-count</div><div class="gia-tri-thuoc-tinh">1 | 3 | infinite</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-direction</div><div class="gia-tri-thuoc-tinh">normal | reverse | alternate | alternate-reverse</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-fill-mode</div><div class="gia-tri-thuoc-tinh">none | forwards | backwards | both</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation-play-state</div><div class="gia-tri-thuoc-tinh">running | paused</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">animation</div><div class="gia-tri-thuoc-tinh">name duration timing delay count direction fill  (shorthand)</div></div>
+      </div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-teal">Cú pháp @keyframes</div>
+      <div class="khoi-code" data-ngon-ngu="CSS"><span class="code-binh-luan">/* Cách 1: from → to */</span>
+<span class="code-tu-khoa">@keyframes</span> <span class="code-selector">fadeIn</span> {
+  <span class="code-tu-khoa">from</span> { <span class="code-gia-tri">opacity: 0; transform: translateY(20px);</span> }
+  <span class="code-tu-khoa">to</span>   { <span class="code-gia-tri">opacity: 1; transform: translateY(0);</span> }
+}
+
+<span class="code-binh-luan">/* Cách 2: dùng phần trăm */</span>
+<span class="code-tu-khoa">@keyframes</span> <span class="code-selector">bounce</span> {
+  <span class="code-so">0%</span>   { <span class="code-gia-tri">transform: translateY(0);</span> }
+  <span class="code-so">30%</span>  { <span class="code-gia-tri">transform: translateY(-28px);</span> }
+  <span class="code-so">60%</span>  { <span class="code-gia-tri">transform: translateY(-14px);</span> }
+  <span class="code-so">100%</span> { <span class="code-gia-tri">transform: translateY(0);</span> }
+}
+
+<span class="code-binh-luan">/* Gán vào element */</span>
+<span class="code-selector">.hop</span> {
+  <span class="code-tu-khoa">animation</span>: <span class="code-gia-tri">bounce 1s ease-in-out infinite;</span>
+}</div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-teal">Demo trực tiếp</div>
+      <div class="khu-demo">
+        <div id="hop-demo">click →</div>
+        <div class="nhom-nut-anim">
+          <button class="nut-anim" onclick="chayHieuUng('fade',   'Fade')">Fade</button>
+          <button class="nut-anim" onclick="chayHieuUng('bounce', 'Bounce')">Bounce</button>
+          <button class="nut-anim" onclick="chayHieuUng('spin',   'Spin')">Spin</button>
+          <button class="nut-anim" onclick="chayHieuUng('shake',  'Shake')">Shake</button>
+          <button class="nut-anim" onclick="chayHieuUng('pulse',  'Pulse')">Pulse</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /panel-animation -->
+
+
+  <!-- ==================== CÚ PHÁP ==================== -->
+  <div class="panel" id="panel-cu-phap">
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-xanh">Cấu trúc cơ bản</div>
+      <div class="khoi-code" data-ngon-ngu="CSS"><span class="code-selector">selector</span> {
+  <span class="code-tu-khoa">thuoc-tinh</span>: <span class="code-gia-tri">gia-tri</span>;  <span class="code-binh-luan">/* mỗi dòng một thuộc tính */</span>
+  <span class="code-tu-khoa">thuoc-tinh</span>: <span class="code-gia-tri">gia-tri</span>;
+}</div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-xanh">Các loại selector</div>
+      <div class="khoi-code" data-ngon-ngu="CSS"><span class="code-selector">p</span>              { }  <span class="code-binh-luan">/* tag — chọn tất cả thẻ p */</span>
+<span class="code-selector">.myClass</span>       { }  <span class="code-binh-luan">/* class */</span>
+<span class="code-selector">#myId</span>          { }  <span class="code-binh-luan">/* id — chỉ 1 phần tử */</span>
+<span class="code-selector">*</span>              { }  <span class="code-binh-luan">/* tất cả phần tử */</span>
+<span class="code-selector">div p</span>          { }  <span class="code-binh-luan">/* p bên trong div (bất kỳ cấp) */</span>
+<span class="code-selector">div > p</span>        { }  <span class="code-binh-luan">/* p là con trực tiếp của div */</span>
+<span class="code-selector">div + p</span>        { }  <span class="code-binh-luan">/* p ngay sau div */</span>
+<span class="code-selector">div ~ p</span>        { }  <span class="code-binh-luan">/* tất cả p sau div */</span>
+<span class="code-selector">div, p</span>         { }  <span class="code-binh-luan">/* cả div lẫn p */</span>
+<span class="code-selector">a:hover</span>        { }  <span class="code-binh-luan">/* pseudo-class */</span>
+<span class="code-selector">p::before</span>      { }  <span class="code-binh-luan">/* pseudo-element */</span>
+<span class="code-selector">[type="text"]</span>  { }  <span class="code-binh-luan">/* attribute selector */</span></div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-xanh">Đơn vị</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">px</div><div class="gia-tri-thuoc-tinh">pixel cố định — 16px, 2px</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">rem</div><div class="gia-tri-thuoc-tinh">relative to root — 1rem = 16px mặc định</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">em</div><div class="gia-tri-thuoc-tinh">relative to parent font-size</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">%</div><div class="gia-tri-thuoc-tinh">phần trăm của phần tử cha</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">vw / vh</div><div class="gia-tri-thuoc-tinh">% viewport width / height</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">vmin / vmax</div><div class="gia-tri-thuoc-tinh">min / max của vw và vh</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">fr</div><div class="gia-tri-thuoc-tinh">fraction — chỉ dùng trong grid</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">deg / turn / rad</div><div class="gia-tri-thuoc-tinh">góc: 90deg | 0.25turn | 1.57rad</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">s / ms</div><div class="gia-tri-thuoc-tinh">thời gian: 1s | 500ms</div></div>
+      </div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-tim">Pseudo-class thông dụng</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:hover</div><div class="gia-tri-thuoc-tinh">khi rê chuột vào</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:active</div><div class="gia-tri-thuoc-tinh">khi đang nhấn click</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:focus</div><div class="gia-tri-thuoc-tinh">khi được focus (input...)</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:visited</div><div class="gia-tri-thuoc-tinh">link đã truy cập</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:first-child</div><div class="gia-tri-thuoc-tinh">phần tử con đầu tiên</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:last-child</div><div class="gia-tri-thuoc-tinh">phần tử con cuối</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:nth-child(n)</div><div class="gia-tri-thuoc-tinh">con thứ n | odd | even | 2n+1</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:not(selector)</div><div class="gia-tri-thuoc-tinh">loại trừ selector đó</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:checked</div><div class="gia-tri-thuoc-tinh">checkbox / radio đang được chọn</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:disabled / :enabled</div><div class="gia-tri-thuoc-tinh">trạng thái input</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">:root</div><div class="gia-tri-thuoc-tinh">phần tử gốc — hay dùng khai báo biến CSS</div></div>
+      </div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-la">Pseudo-element</div>
+      <div class="luoi-thuoc-tinh">
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">::before</div><div class="gia-tri-thuoc-tinh">chèn nội dung trước (cần content: '')</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">::after</div><div class="gia-tri-thuoc-tinh">chèn nội dung sau (cần content: '')</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">::placeholder</div><div class="gia-tri-thuoc-tinh">style placeholder của input</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">::selection</div><div class="gia-tri-thuoc-tinh">style text đang được bôi xanh</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">::first-line</div><div class="gia-tri-thuoc-tinh">dòng đầu tiên của đoạn văn</div></div>
+        <div class="the-thuoc-tinh"><div class="ten-thuoc-tinh">::first-letter</div><div class="gia-tri-thuoc-tinh">ký tự đầu tiên</div></div>
+      </div>
+    </div>
+
+    <div class="nhom">
+      <div class="nhan-nhom nhan-cam">CSS Variables</div>
+      <div class="khoi-code" data-ngon-ngu="CSS"><span class="code-binh-luan">/* Khai báo biến ở :root */</span>
+<span class="code-selector">:root</span> {
+  <span class="code-tu-khoa">--mau-chinh</span>: <span class="code-gia-tri">#6366f1;</span>
+  <span class="code-tu-khoa">--bo-goc</span>:    <span class="code-gia-tri">8px;</span>
+  <span class="code-tu-khoa">--khoang-cach</span>: <span class="code-gia-tri">16px;</span>
+}
+
+<span class="code-binh-luan">/* Dùng biến */</span>
+<span class="code-selector">.nut</span> {
+  <span class="code-tu-khoa">background</span>:    <span class="code-gia-tri">var(--mau-chinh);</span>
+  <span class="code-tu-khoa">border-radius</span>: <span class="code-gia-tri">var(--bo-goc);</span>
+  <span class="code-tu-khoa">gap</span>:           <span class="code-gia-tri">var(--khoang-cach, 12px);</span>  <span class="code-binh-luan">/* 12px là fallback */</span>
+}</div>
+    </div>
+
+  </div><!-- /panel-cu-phap -->
+
+</div><!-- /container -->
+
+<script src="script.js"></script>
+</body>
+</html>

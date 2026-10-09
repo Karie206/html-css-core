@@ -1,0 +1,353 @@
+/* =============================================
+   BIẾN TOÀN CỤC
+   ============================================= */
+:root {
+  /* Nền */
+  --mau-nen-chinh:    #0f1117;
+  --mau-nen-thu:      #1a1d2e;
+  --mau-nen-thu3:     #252840;
+
+  /* Viền */
+  --mau-vien:         #2e3250;
+  --mau-vien-hover:   #4a5080;
+
+  /* Chữ */
+  --mau-chu-chinh:    #e2e8f0;
+  --mau-chu-mo:       #8892a4;
+
+  /* Màu chủ đề theo tab */
+  --mau-tim:          #a78bfa;
+  --mau-tim-nen:      #1e1a3a;
+
+  --mau-xanh-duong:   #60a5fa;
+  --mau-xanh-nen:     #172035;
+
+  --mau-xanh-la:      #34d399;
+  --mau-xanh-la-nen:  #0d2a1f;
+
+  --mau-cam:          #fb923c;
+  --mau-cam-nen:      #2a1a0d;
+
+  --mau-hong:         #f472b6;
+  --mau-hong-nen:     #2a0d1f;
+
+  --mau-teal:         #2dd4bf;
+  --mau-teal-nen:     #0d2a2a;
+
+  --mau-vang:         #fbbf24;
+
+  /* Khác */
+  --font-code:        'Consolas', 'Fira Code', monospace;
+  --border-radius-card: 10px;
+  --border-radius-tab:  999px;
+}
+
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--mau-nen-chinh);
+  color: var(--mau-chu-chinh);
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+
+/* =============================================
+   LAYOUT CHÍNH
+   ============================================= */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tieu-de {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--mau-tim), var(--mau-xanh-duong), var(--mau-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mo-ta {
+  text-align: center;
+  color: var(--mau-chu-mo);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+
+/* =============================================
+   THANH TÌM KIẾM
+   ============================================= */
+.khu-tim-kiem {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#o-tim-kiem {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  border-radius: var(--border-radius-tab);
+  border: 1px solid var(--mau-vien);
+  background: var(--mau-nen-thu);
+  color: var(--mau-chu-chinh);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#o-tim-kiem:focus        { border-color: var(--mau-tim); }
+#o-tim-kiem::placeholder { color: var(--mau-chu-mo); }
+
+
+/* =============================================
+   TABS
+   ============================================= */
+.danh-sach-tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+.tab {
+  padding: 8px 18px;
+  border-radius: var(--border-radius-tab);
+  border: 1px solid var(--mau-vien);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--mau-chu-mo);
+  background: var(--mau-nen-thu);
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: var(--mau-chu-chinh);
+  border-color: var(--mau-vien-hover);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #3730a3, #1d4ed8);
+  color: #fff;
+  border-color: transparent;
+}
+
+
+/* =============================================
+   PANEL (nội dung mỗi tab)
+   ============================================= */
+.panel        { display: none; }
+.panel.active { display: block; }
+
+
+/* =============================================
+   NHÓM THUỘC TÍNH
+   ============================================= */
+.nhom {
+  margin-bottom: 28px;
+}
+
+.nhan-nhom {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+/* Màu nhãn theo tab */
+.nhan-tim     { background: var(--mau-tim-nen);      color: var(--mau-tim); }
+.nhan-xanh    { background: var(--mau-xanh-nen);     color: var(--mau-xanh-duong); }
+.nhan-la      { background: var(--mau-xanh-la-nen);  color: var(--mau-xanh-la); }
+.nhan-cam     { background: var(--mau-cam-nen);       color: var(--mau-cam); }
+.nhan-hong    { background: var(--mau-hong-nen);      color: var(--mau-hong); }
+.nhan-teal    { background: var(--mau-teal-nen);      color: var(--mau-teal); }
+
+
+/* =============================================
+   LƯỚI THUỘC TÍNH
+   ============================================= */
+.luoi-thuoc-tinh {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 8px;
+}
+
+.the-thuoc-tinh {
+  background: var(--mau-nen-thu);
+  border: 1px solid var(--mau-vien);
+  border-radius: var(--border-radius-card);
+  padding: 10px 14px;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: default;
+}
+
+.the-thuoc-tinh:hover {
+  background: var(--mau-nen-thu3);
+  border-color: var(--mau-vien-hover);
+}
+
+.ten-thuoc-tinh {
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mau-tim);        /* mặc định — tab Văn bản */
+}
+
+.gia-tri-thuoc-tinh {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--mau-chu-mo);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+/* Màu tên thuộc tính theo tab */
+.tab-xanh  .ten-thuoc-tinh { color: var(--mau-xanh-duong); }
+.tab-la    .ten-thuoc-tinh { color: var(--mau-xanh-la); }
+.tab-cam   .ten-thuoc-tinh { color: var(--mau-cam); }
+.tab-hong  .ten-thuoc-tinh { color: var(--mau-hong); }
+.tab-teal  .ten-thuoc-tinh { color: var(--mau-teal); }
+
+
+/* =============================================
+   KHỐI CODE
+   ============================================= */
+.khoi-code {
+  background: #0a0d1a;
+  border: 1px solid var(--mau-vien);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-family: var(--font-code);
+  font-size: 13px;
+  line-height: 1.9;
+  white-space: pre;
+  overflow-x: auto;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.khoi-code::before {
+  content: attr(data-ngon-ngu);
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 11px;
+  color: var(--mau-chu-mo);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Syntax highlighting */
+.code-tu-khoa  { color: var(--mau-tim); }
+.code-gia-tri  { color: var(--mau-xanh-la); }
+.code-binh-luan{ color: #4b5563; font-style: italic; }
+.code-selector { color: var(--mau-cam); }
+.code-chuoi    { color: var(--mau-teal); }
+.code-so       { color: var(--mau-vang); }
+
+
+/* =============================================
+   DEMO ANIMATION
+   ============================================= */
+.khu-demo {
+  background: var(--mau-nen-thu);
+  border: 1px solid var(--mau-vien);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#hop-demo {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--mau-tim), var(--mau-xanh-duong));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nhom-nut-anim { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.nut-anim {
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--mau-vien);
+  background: var(--mau-nen-thu3);
+  color: var(--mau-chu-chinh);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.nut-anim:hover {
+  background: #2e3565;
+  border-color: var(--mau-tim);
+  color: var(--mau-tim);
+}
+
+
+/* =============================================
+   KEYFRAMES (dùng trong demo)
+   ============================================= */
+@keyframes hieu-ung-fade {
+  0%   { opacity: 0; transform: scale(0.75); }
+  50%  { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hieu-ung-bounce {
+  0%, 100% { transform: translateY(0); }
+  30%       { transform: translateY(-28px); }
+  60%       { transform: translateY(-14px); }
+}
+
+@keyframes hieu-ung-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes hieu-ung-shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-10px); }
+  40%      { transform: translateX(10px); }
+  60%      { transform: translateX(-10px); }
+  80%      { transform: translateX(10px); }
+}
+
+@keyframes hieu-ung-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.25); opacity: 0.7; }
+}
